@@ -1,0 +1,10 @@
+.gt-item-container {
+    display: flex;
+    gap: 1rem;
+}
+
+
+.gt-item-container > p {
+    font-size: 1rem;
+    font-weight: initial;
+}

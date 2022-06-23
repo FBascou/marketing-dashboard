@@ -1,0 +1,36 @@
+.stacked-wrapper {
+    margin-bottom: 1rem;
+}
+
+.stacked-svg {
+    background-color: #fff;
+    overflow: visible;
+    width: 100%;
+}
+
+.y-axis-stacked path {
+    fill: none;
+    stroke: transparent;
+    visibility: hidden;
+   shape-rendering: crispEdges;
+    
+}
+
+.y-axis-stacked line, .x-axis-stacked line {
+    fill: none;
+   stroke: #c2c2c2;
+   shape-rendering: crispEdges;
+}
+
+.fields {
+    margin: 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.key-select {
+    cursor: pointer;
+}
+

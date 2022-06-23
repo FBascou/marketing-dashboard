@@ -1,0 +1,29 @@
+.social-media-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 1rem;
+    gap: 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.table-wrapper {
+    width: 100%;
+    margin: 0;
+}
+
+
+@media screen and (max-width: 600px) {
+    .social-media-container {
+        max-width: 600px;
+    }
+
+    .table-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+    }
+}
