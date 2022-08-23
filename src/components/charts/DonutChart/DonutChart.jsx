@@ -1,96 +1,96 @@
 import React, { useRef, useEffect } from 'react';
 import useResizeOberserver from '../../../hooks/useResizeObserver';
 import { select, scaleOrdinal, pie, arc } from 'd3';
-// import { arc } from 'd3-shape';
 import './DonutChart.css';
 
 const DonutChart = ({ data }) => {
-  const svgRef = useRef();
-  const wrapperRef = useRef();
-  const dimensions = useResizeOberserver(wrapperRef);
-  // console.log(data);
+	const svgRef = useRef();
+	const wrapperRef = useRef();
+	const dimensions = useResizeOberserver(wrapperRef);
 
-  useEffect(() => {
-    const svg = select(svgRef.current);
-    const { width, height } =
-      dimensions || wrapperRef.current.getBoundingClientRect();
-    const radius = Math.min(width, height) / 2;
-    const donutWidth = 75;
+	useEffect(() => {
+		const svg = select(svgRef.current);
+		const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
+		const radius = Math.min(width, height) / 1.5;
+		const donutWidth = 40;
+		const colors = scaleOrdinal().range([
+			'#FFB3FF',
+			'#FF80FF',
+			'#FF00FF',
+			'#FF0080',
+			'#EA27C2',
+			'#EF4782',
+			'#B300B3',
+			'#8000FF',
+			'#800080',
+		]);
 
-    const color = scaleOrdinal().range([
-      '#5A39AC',
-      '#DD98D6',
-      '#E7C820',
-      '#08B2B2',
-    ]);
+		svg.select('.donut-svg')
+			.append('svg')
+			.attr('width', width)
+			.attr('height', height)
+			.attr('preserveAspectRatio', 'xMinYMin')
+			.attr('width', width)
+			.attr('height', height)
+			.append('g')
+			.attr('viewBox', `0 0 ${width} ${width}`)
+			.attr(
+				'transform',
+				`translate(${Math.min(width, height) / 2}, ${Math.min(width, height) / 2})`
+			);
 
-    svg
-      .select('.donut-svg')
-      //   .append('svg')
-      .attr('width', width)
-      .attr('height', height)
-      .append('g')
-      .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+		const pieShape = pie()
+			.value((d) => d.lastMonth)
+			.sort(null);
 
-    const arcShape = arc()
-      .innerRadius(radius - donutWidth)
-      .outerRadius(radius);
+		const arcShape = arc()
+			.innerRadius(radius - donutWidth)
+			.outerRadius(radius);
 
-    const pieShape = pie()
-      .value(function (d) {
-        return d.value;
-      })
-      .sort(null);
+		svg.selectAll('path')
+			.data(pieShape(data))
+			.enter()
+			.append('path')
+			.attr('d', arcShape)
+			.attr('fill', (d, i) => colors(d.data.name))
+			.attr('transform', 'translate(0, 0)');
 
-    const path = svg
-      .selectAll('path')
-      .data(pieShape(data))
-      .enter()
-      .append('path')
-      .attr('d', arcShape)
-      .attr('fill', function (d, i) {
-        return color(d.data);
-      })
-      .attr('transform', 'translate(0, 0)');
+		const legendRectSize = 12;
+		const legendSpacing = 10;
+		const legend = svg
+			.selectAll('.legend') //the legend and placement
+			.data(colors.domain())
+			.enter()
+			.append('g')
+			.attr('class', 'circle-legend')
+			.attr('transform', (d, i) => {
+				const height = legendRectSize + legendSpacing;
+				const offset = (height * colors.domain().length) / 2;
+				const horizontal = 12 * legendRectSize - 12;
+				const vertical = i * height - offset;
+				return 'translate(' + horizontal + ',' + vertical + ')';
+			});
+		legend
+			.append('circle') //keys
+			.style('fill', colors)
+			.style('stroke', colors)
+			.attr('cx', 0)
+			.attr('cy', 0)
+			.attr('r', '.5rem');
+		legend
+			.append('text') //labels
+			.attr('x', legendRectSize + legendSpacing)
+			.attr('y', legendRectSize - legendSpacing)
+			.text((d) => d);
+	}, [dimensions, data]);
 
-    const legendRectSize = 13;
-    const legendSpacing = 7;
-    const legend = svg
-      .selectAll('.legend') //the legend and placement
-      .data(color.domain())
-      .enter()
-      .append('g')
-      .attr('class', 'circle-legend')
-      .attr('transform', function (d, i) {
-        const height = legendRectSize + legendSpacing;
-        const offset = (height * color.domain().length) / 2;
-        const horz = -2 * legendRectSize - 13;
-        const vert = i * height - offset;
-        return 'translate(' + horz + ',' + vert + ')';
-      });
-    legend
-      .append('circle') //keys
-      .style('fill', color)
-      .style('stroke', color)
-      .attr('cx', 0)
-      .attr('cy', 0)
-      .attr('r', '.5rem');
-    legend
-      .append('text') //labels
-      .attr('x', legendRectSize + legendSpacing)
-      .attr('y', legendRectSize - legendSpacing)
-      .text(function (d) {
-        return d;
-      });
-  }, [data]);
-
-  return (
-    <div className="donut-container">
-      <div className="donut-wrapper" ref={wrapperRef}>
-        <svg className="donut-svg" ref={svgRef}></svg>
-      </div>
-    </div>
-  );
+	return (
+		<div className='donut-container'>
+			<div className='donut-wrapper' ref={wrapperRef}>
+				<svg className='donut-svg' ref={svgRef}></svg>
+			</div>
+		</div>
+	);
 };
 
 export default DonutChart;

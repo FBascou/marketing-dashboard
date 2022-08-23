@@ -1,6 +1,6 @@
 import React from 'react';
-import { arc } from 'd3-shape';
-import { scaleLinear } from 'd3-scale';
+import { arc } from 'd3';
+import { scaleLinear } from 'd3';
 // import { format } from 'd3-format';
 import './GaugeChart.css';
 

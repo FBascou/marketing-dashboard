@@ -1,21 +1,21 @@
-import React from 'react';
+import './Dropdown.css';
 
-const Dropdown = ({ label, data, value, onChange }) => {
-  return (
-    <div>
-      <label>
-        {label}
-        <select value={value} onChange={onChange}>
-          {data.map((option) => (
-            <option key={Math.random()} value={option.value}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </label>
-      <p>{value}</p>
-    </div>
-  );
+const Dropdown = ({ id, label, placeholder, data, value, handleChange }) => {
+	return (
+		<div className='dropdown-container'>
+			<label htmlFor={id}>{label}</label>
+			<select name={id} id={id} value={value} onChange={handleChange}>
+				<option value='' disabled hidden id='select-option-disabled'>
+					{placeholder}
+				</option>
+				{data.map((option) => (
+					<option key={option.id} value={option.name}>
+						{option.name}
+					</option>
+				))}
+			</select>
+		</div>
+	);
 };
 
 export default Dropdown;
