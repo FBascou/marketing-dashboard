@@ -37,7 +37,7 @@ const Layout = () => {
 
   return (
     <main className="main-grid-container">
-      <div className="logo area"></div>
+      {/* <div className="logo area"></div> */}
       <div className="budget-expense-grid-container area">
         <BudgetExpense
           data={allDataArray[0]}

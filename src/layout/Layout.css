@@ -3,20 +3,20 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
   grid-column-gap: 2rem;
-  grid-row-gap: 1rem;
+  grid-row-gap: 2rem;
   width: 100%;
   height: 100%;
   padding: 1rem;
 }
 
-.logo {
+/* .logo {
   grid-area: 1 / 1 / 3 / 5;
-}
+} */
 .overview-grid-container {
   grid-area: 1 / 5 / 3 / 13;
 }
 .budget-expense-grid-container {
-  grid-area: 3 / 1 / 7 / 5;
+  grid-area: 1 / 1 / 7 / 5;
 }
 .lead-grid-container {
   grid-area: 3 / 5 / 7 / 9;
@@ -42,7 +42,7 @@
   flex-direction: row;
   width: 100%; */
   /* border: 1px solid black; */
-  /* padding: 1rem; */
+  padding: 0 1rem;
 }
 
 @media screen and (max-width: 600px) {
