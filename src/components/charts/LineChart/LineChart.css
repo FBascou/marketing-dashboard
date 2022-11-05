@@ -1,32 +1,34 @@
 .line-wrapper {
-    max-height: 100px;
+  max-height: 100px;
 }
 
 .line-svg {
-    overflow: visible;
-    background-color: transparent;
+  overflow: visible;
+  width: 100%;
+  background-color: transparent;
 }
 
-.y-axis-line path, .x-axis-line path {
-    fill: none;
-    stroke: #e0e0e0;
-    visibility: hidden;
-    opacity: 0.5;
-   shape-rendering: crispEdges;
-    
+.y-axis-line path,
+.x-axis-line path {
+  fill: none;
+  stroke: #e0e0e0;
+  visibility: hidden;
+  opacity: 0.5;
+  shape-rendering: crispEdges;
 }
 
-.y-axis-line line, .x-axis-line line {
-    fill: none;
-   stroke: #e0e0e0;
-   opacity: 0.5;
-   shape-rendering: crispEdges;
+.y-axis-line line,
+.x-axis-line line {
+  fill: none;
+  stroke: #e0e0e0;
+  opacity: 0.5;
+  shape-rendering: crispEdges;
 }
 
 .fields {
-    margin: 2rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
+  margin: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
 }
