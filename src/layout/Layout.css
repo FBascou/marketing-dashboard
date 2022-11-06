@@ -1,37 +1,38 @@
 .main-grid-container {
   display: grid;
+  align-items: start;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
   grid-column-gap: 2rem;
-  grid-row-gap: 2rem;
+  grid-row-gap: 3rem;
   width: 100%;
   height: 100%;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 /* .logo {
   grid-area: 1 / 1 / 3 / 5;
 } */
 .overview-grid-container {
-  grid-area: 1 / 5 / 3 / 13;
+  grid-area: 1 / 11 / 13 / 13;
 }
 .budget-expense-grid-container {
-  grid-area: 1 / 1 / 7 / 5;
+  grid-area: 1 / 1 / 5 / 5;
 }
 .lead-grid-container {
-  grid-area: 3 / 5 / 7 / 9;
+  grid-area: 1 / 5 / 5 / 8;
 }
 .conversion-grid-container {
-  grid-area: 3 / 9 / 7 / 13;
-}
-.social-media-grid-container {
-  grid-area: 7 / 1 / 13 / 5;
-}
-.traffic-source-grid-container {
-  grid-area: 7 / 5 / 13 / 9;
+  grid-area: 1 / 8 / 5 / 11;
 }
 .goal-tracker-grid-container {
-  grid-area: 7 / 9 / 13 / 13;
+  grid-area: 5 / 1 / 13 / 6;
+}
+/* .traffic-source-grid-container {
+  grid-area: 5 / 5 / 13 / 8;
+} */
+.social-media-grid-container {
+  grid-area: 5 / 6 / 13 / 11;
 }
 
 .area {
@@ -42,7 +43,8 @@
   flex-direction: row;
   width: 100%; */
   /* border: 1px solid black; */
-  padding: 0 1rem;
+  height: 100%;
+  /* padding: 1rem; */
 }
 
 @media screen and (max-width: 600px) {

@@ -73,9 +73,9 @@ const Layout = () => {
       <div className="social-media-grid-container area">
         <SocialMedia title="Social Media" data={allSocialMediaData} colorPrimary={colorPrimary} />
       </div>
-      <div className="traffic-source-grid-container area">
+      {/* <div className="traffic-source-grid-container area">
         <TrafficSource data={websiteTrafficAllData} />
-      </div>
+      </div> */}
       <div className="goal-tracker-grid-container area">
         <GoalTracker
           data={allDataArray}

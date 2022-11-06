@@ -1,0 +1,22 @@
+.tooltip-container {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip-popup {
+  display: none;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background-color: blue;
+  width: 100px;
+  height: 20px;
+  padding: 1rem;
+}
+
+.tooltip-container:hover .tooltip-popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+}
