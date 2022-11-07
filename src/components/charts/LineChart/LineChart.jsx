@@ -11,6 +11,8 @@ const LineChart = ({ data, colorPrimary, colorSecondary }) => {
   const months = Object.keys(data)
   const maxNumber = Math.max(...keys)
 
+  // button to switch between curved and lined graphs
+
   useEffect(() => {
     const svg = select(svgRef.current)
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect()
@@ -41,7 +43,10 @@ const LineChart = ({ data, colorPrimary, colorSecondary }) => {
       .tickSizeOuter(0)
       .tickPadding(8)
       .tickFormat((d, i) => months[i][0]) //[0] = First letter of the month
-    svg.select('.x-axis-line').style('transform', `translateY(${height}px)`).call(xAxis)
+    svg
+      .select('.x-axis-line')
+      .style('transform', `translateY(${height + 20}px)`)
+      .call(xAxis)
 
     // add y axis ticks and values
     const yAxis = axisRight(yScale)
@@ -51,7 +56,7 @@ const LineChart = ({ data, colorPrimary, colorSecondary }) => {
       .tickSize(width, 0, 0)
       .tickSizeOuter(0)
       .tickPadding(-width + 5)
-    // svg.select('.y-axis-line').style('transform', `translate(0, ${width})`).call(yAxis);
+    // svg.select('.y-axis-line').style('transform', `translate(0, ${width})`).call(yAxis)
 
     const myLine = line()
       .x((value, index) => xScale(index))
@@ -91,20 +96,20 @@ const LineChart = ({ data, colorPrimary, colorSecondary }) => {
       .attr('d', myLine)
       .attr('fill', 'none')
       .attr('stroke', colorPrimary)
-    // .attr('stroke', 'url(#line-gradient)');
+    // .attr('stroke', 'url(#line-gradient)')
 
     // add points to line chart
-    svg
-      .selectAll('.points')
-      .data(keys)
-      .enter()
-      .append('circle')
-      .attr('class', 'points')
-      .attr('fill', colorPrimary)
-      .attr('stroke', 'none')
-      .attr('cx', (d, i) => xScale(i))
-      .attr('cy', (d, i) => yScale(keys[i]))
-      .attr('r', 1.3)
+    // svg
+    //   .selectAll('.points')
+    //   .data(keys)
+    //   .enter()
+    //   .append('circle')
+    //   .attr('class', 'points')
+    //   .attr('fill', colorPrimary)
+    //   .attr('stroke', 'none')
+    //   .attr('cx', (d, i) => xScale(i))
+    //   .attr('cy', (d, i) => yScale(keys[i]))
+    //   .attr('r', 1.3)
   }, [dimensions, months, keys, colorPrimary, colorSecondary])
 
   return (
