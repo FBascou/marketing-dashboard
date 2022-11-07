@@ -63,15 +63,12 @@ const GoalTracker = ({ title, data, colorPrimary, colorSecondary }) => {
   return (
     <div className="goal-tracker-container">
       <h2>{title}</h2>
-      <div className="goal-tracker-list">
-        {goals.map((item) => (
-          <GoalTrackerItem key={item.id} data={item} />
-        ))}
-        {/* <Table headers={headers} data={goals} /> */}
-      </div>
+      {goals?.map((item, index) => (
+        <GoalTrackerItem key={index} data={item} />
+      ))}
       <div className="goal-tracker-new">
         <div className="goal-tracker-btn">
-          <Button onClick={handleModal} />
+          {goals.length < 6 ? <Button onClick={handleModal} /> : null}
           {showModal ? (
             <AddNewModal
               title={'Goal'}

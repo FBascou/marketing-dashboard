@@ -157,13 +157,13 @@ h2 {
 
 h3 {
   color: #a9a9a9;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 p,
 table th,
 table td {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 /* input:focus {

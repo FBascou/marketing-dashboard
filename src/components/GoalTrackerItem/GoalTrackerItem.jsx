@@ -3,6 +3,7 @@ import './GoalTrackerItem.css'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsFillCircleFill } from 'react-icons/bs'
+import Tooltip from '../Tooltip/Tooltip'
 
 const statusList = {
   incomplete: 'red',
@@ -31,7 +32,8 @@ const GoalTrackerItem = ({ data }) => {
           <BsFillCircleFill style={{ color: goalStatus }} />
         </div>
         <div className="gt-item-percentage">
-          <p>85%</p>
+          <Tooltip text={'85%'} />
+          {/* <p></p> */}
         </div>
         {/* remove these and add them to goal tracker page? */}
         <div className="gt-item-edit">

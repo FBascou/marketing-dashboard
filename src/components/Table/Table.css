@@ -39,10 +39,10 @@
   justify-content: center;
   width: 100%;
 }
-
+/* 
 .table-container tbody tr:hover {
   background-color: rgba(0, 0, 0, 0.05);
-}
+} */
 
 .social-media-icon {
   font-size: 1.5rem;

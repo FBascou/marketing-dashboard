@@ -19,7 +19,7 @@ const LineChart = ({ data, colorPrimary, colorSecondary }) => {
     const tickAmount = 4
 
     //set tick values proportionate to monthly values
-    const tickValues = [0, 50, 100, 150, 200, maxNumber]
+    const tickValues = [0, 50, 100, 150, maxNumber]
 
     // scale
     const xScale = scaleLinear()
@@ -34,29 +34,6 @@ const LineChart = ({ data, colorPrimary, colorSecondary }) => {
       ticks.push(newLastTick)
     }
     yScale.domain([yScale.domain()[0], newLastTick])
-
-    // axes
-    const xAxis = axisBottom(xScale)
-      .ticks(months.length)
-      .tickFormat((index) => index + 1)
-      .tickSize(0, 0, 0)
-      .tickSizeOuter(0)
-      .tickPadding(8)
-      .tickFormat((d, i) => months[i][0]) //[0] = First letter of the month
-    svg
-      .select('.x-axis-line')
-      .style('transform', `translateY(${height + 20}px)`)
-      .call(xAxis)
-
-    // add y axis ticks and values
-    const yAxis = axisRight(yScale)
-      .ticks(tickAmount)
-      .tickValues(tickValues)
-      .tickFormat((d) => d)
-      .tickSize(width, 0, 0)
-      .tickSizeOuter(0)
-      .tickPadding(-width + 5)
-    // svg.select('.y-axis-line').style('transform', `translate(0, ${width})`).call(yAxis)
 
     const myLine = line()
       .x((value, index) => xScale(index))
@@ -94,23 +71,64 @@ const LineChart = ({ data, colorPrimary, colorSecondary }) => {
       .attr('height', height)
       .attr('class', 'line')
       .attr('d', myLine)
+      .transition()
       .attr('fill', 'none')
       .attr('stroke', colorPrimary)
     // .attr('stroke', 'url(#line-gradient)')
 
     // add points to line chart
-    // svg
-    //   .selectAll('.points')
-    //   .data(keys)
-    //   .enter()
-    //   .append('circle')
-    //   .attr('class', 'points')
-    //   .attr('fill', colorPrimary)
-    //   .attr('stroke', 'none')
-    //   .attr('cx', (d, i) => xScale(i))
-    //   .attr('cy', (d, i) => yScale(keys[i]))
-    //   .attr('r', 1.3)
-  }, [dimensions, months, keys, colorPrimary, colorSecondary])
+    svg
+      .selectAll('.points')
+      .data(keys)
+      .enter()
+      .append('circle')
+      .attr('class', 'points')
+      .attr('fill', colorPrimary)
+      .attr('stroke', 'none')
+      .attr('cx', (d, index) => xScale(index))
+      .attr('cy', (d, index) => yScale(keys[index]))
+      .attr('r', 3)
+      .on('mouseenter', (event, value) => {
+        const index = svg.selectAll('.circle').nodes().indexOf(event.target)
+        svg
+          .selectAll('.tooltip')
+          .data([value])
+          .join((enter) => enter.append('text').attr('y', yScale(value) - 4))
+          .attr('class', 'tooltip')
+          .text(value)
+          .attr('x', xScale(index) + xScale.bandwidth() / 2)
+          .attr('text-anchor', 'middle')
+          .transition()
+          .attr('y', yScale(value) - 8)
+          .attr('opacity', 1)
+      })
+      .on('mouseleave', () => svg.select('.tooltip').remove())
+      .transition()
+
+    // axes
+    const xAxis = axisBottom(xScale)
+      .ticks(months.length)
+      .tickFormat((index) => index + 1)
+      .tickSize(0, 0, 0)
+      .tickSizeOuter(0)
+      .tickPadding(8)
+      .tickFormat((d, i) => months[i][0]) //[0] = First letter of the month
+    // tickcolor to gray
+    svg
+      .select('.x-axis-line')
+      .style('transform', `translateY(${height + 20}px)`)
+      .call(xAxis)
+
+    // add y axis ticks and values
+    const yAxis = axisRight(yScale)
+      .ticks(tickAmount)
+      .tickValues(tickValues)
+      .tickFormat((d) => d)
+      .tickSize(width, 0, 0)
+      .tickSizeOuter(0)
+      .tickPadding(-width + 5)
+    // svg.select('.y-axis-line').style('transform', `translate(0, ${width})`).call(yAxis)
+  }, [months, keys, dimensions])
 
   return (
     <div className="line-container">
