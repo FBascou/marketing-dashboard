@@ -57,7 +57,16 @@ export const overviewAllData = [
 // Website
 
 export const websiteAllData = [
-  { id: 1, name: 'Sessions', sessions: sumValue(websiteData, 'sessions') },
+  { id: 1, name: 'Sessions', value: sumValue(websiteData, 'sessions').toLocaleString('en') },
+  { id: 2, name: 'Impressions', value: sumValue(websiteData, 'impressions').toLocaleString('en') },
+  { id: 3, name: 'Visits', value: sumValue(websiteData, 'visits').toLocaleString('en') },
+  { id: 4, name: 'Clicks', value: sumValue(websiteData, 'clicks').toLocaleString('en') },
+  {
+    id: 5,
+    name: 'CTR %',
+    value: (sumValue(websiteData, 'clicks') / sumValue(websiteData, 'impressions')).toFixed(2),
+  },
+  // { id: 6, name: 'ER %', value: sumValue(websiteData, 'er') },
 ]
 
 // Website Traffic

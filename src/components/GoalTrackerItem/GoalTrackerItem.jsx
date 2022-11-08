@@ -31,14 +31,13 @@ const GoalTrackerItem = ({ data }) => {
         <div className="gt-item-status">
           <BsFillCircleFill style={{ color: goalStatus }} />
         </div>
-        <div className="gt-item-percentage">
+        {/* <div className="gt-item-percentage">
           <Tooltip text={'85%'} />
-          {/* <p></p> */}
-        </div>
+        </div> */}
         {/* remove these and add them to goal tracker page? */}
-        <div className="gt-item-edit">
+        {/* <div className="gt-item-edit">
           <AiOutlineEdit />
-        </div>
+        </div> */}
         <div className="gt-item-delete">
           <AiOutlineClose />
         </div>

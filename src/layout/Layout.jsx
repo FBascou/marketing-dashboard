@@ -10,11 +10,14 @@ import SocialMedia from '../components/SocialMedia/SocialMedia'
 import './Layout.css'
 import {
   allDataArray,
+  websiteAllData,
   leadsAllData,
   conversionsAllData,
   allSocialMediaData,
   websiteTrafficAllData,
 } from '../data/transformedData'
+
+// Change traffic source donut for horizontal bar chart
 
 const Layout = () => {
   const [showModal, setShowModal] = useState('')
@@ -46,7 +49,7 @@ const Layout = () => {
         />
       </div>
       <div className="overview-grid-container area">
-        <WebsiteOverview onClick={handleModal} showModal={showModal} data={allDataArray} />
+        <WebsiteOverview onClick={handleModal} showModal={showModal} data={websiteAllData} />
       </div>
       <div className="lead-grid-container area">
         <CardChart

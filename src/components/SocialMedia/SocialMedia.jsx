@@ -2,7 +2,7 @@ import './SocialMedia.css'
 import Table from '../Table/Table'
 
 const SocialMedia = ({ title, data, colorPrimary }) => {
-  const headers = ['Channel', 'Followers', 'Page Views', 'CTR %', 'ER %']
+  const headers = ['Channel', 'Follows', 'Visits', 'CTR %', 'ER %'] // Visits = Page Views, Follows = Followers
   return (
     <div className="social-media-container">
       <h2>{title}</h2>

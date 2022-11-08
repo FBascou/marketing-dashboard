@@ -163,7 +163,7 @@ h3 {
 p,
 table th,
 table td {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 /* input:focus {
@@ -186,4 +186,10 @@ a {
 
 button {
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  #root {
+    height: auto;
+  }
 }

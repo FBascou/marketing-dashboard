@@ -17,9 +17,10 @@ const LineChart = ({ data, colorPrimary, colorSecondary }) => {
     const svg = select(svgRef.current)
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect()
     const tickAmount = 4
-
     //set tick values proportionate to monthly values
     const tickValues = [0, 50, 100, 150, maxNumber]
+
+    if (!dimensions) return
 
     // scale
     const xScale = scaleLinear()
@@ -87,19 +88,19 @@ const LineChart = ({ data, colorPrimary, colorSecondary }) => {
       .attr('stroke', 'none')
       .attr('cx', (d, index) => xScale(index))
       .attr('cy', (d, index) => yScale(keys[index]))
-      .attr('r', 3)
+      .attr('r', 3.5)
       .on('mouseenter', (event, value) => {
         const index = svg.selectAll('.circle').nodes().indexOf(event.target)
         svg
           .selectAll('.tooltip')
           .data([value])
-          .join((enter) => enter.append('text').attr('y', yScale(value) - 4))
+          .join((enter) => enter.append('text'))
           .attr('class', 'tooltip')
           .text(value)
-          .attr('x', xScale(index) + xScale.bandwidth() / 2)
+          .attr('x', xScale(index) + width / 2 + 20)
           .attr('text-anchor', 'middle')
           .transition()
-          .attr('y', yScale(value) - 8)
+          .attr('y', yScale(index) - height / 2 - 40)
           .attr('opacity', 1)
       })
       .on('mouseleave', () => svg.select('.tooltip').remove())
