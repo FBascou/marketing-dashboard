@@ -1,13 +1,13 @@
-import React from 'react'
-import { useState } from 'react'
-import BudgetExpense from '../components/BudgetExpense/BudgetExpense'
-import CardChart from '../components/CardChart/CardChart'
-import GoalTracker from '../components/GoalTracker/GoalTracker'
-import Header from '../components/Header/Header'
-import TrafficSource from '../components/TrafficSource/TrafficSource'
-import WebsiteOverview from '../components/WebsiteOverview/WebsiteOverview'
-import SocialMedia from '../components/SocialMedia/SocialMedia'
-import './Layout.css'
+import React from 'react';
+import { useState } from 'react';
+import BudgetExpense from '../components/BudgetExpense/BudgetExpense';
+import CardChart from '../components/CardChart/CardChart';
+import GoalTracker from '../components/GoalTracker/GoalTracker';
+import Header from '../components/Header/Header';
+import TrafficSource from '../components/TrafficSource/TrafficSource';
+import WebsiteOverview from '../components/WebsiteOverview/WebsiteOverview';
+import SocialMedia from '../components/SocialMedia/SocialMedia';
+import './Layout.css';
 import {
   allDataArray,
   websiteAllData,
@@ -15,32 +15,31 @@ import {
   conversionsAllData,
   allSocialMediaData,
   websiteTrafficAllData,
-} from '../data/transformedData'
+} from '../data/transformedData';
 
 // Change traffic source donut for horizontal bar chart
 
 const Layout = () => {
-  const [showModal, setShowModal] = useState('')
+  const [showModal, setShowModal] = useState('');
 
   const handleModal = (e) => {
-    e.preventDefault()
-    console.log('hello')
-    setShowModal((show) => !show)
-  }
+    e.preventDefault();
+    console.log('hello');
+    setShowModal((show) => !show);
+  };
 
   const handleCancel = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
   const handleAccept = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
 
-  const colorPrimary = '#FF00FF'
-  const colorSecondary = '#800080'
+  const colorPrimary = '#FF00FF';
+  const colorSecondary = '#800080';
 
   return (
     <main className="main-grid-container">
-      {/* <div className="logo area"></div> */}
       <div className="budget-expense-grid-container area">
         <BudgetExpense
           data={allDataArray[0]}
@@ -88,7 +87,7 @@ const Layout = () => {
         />
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

@@ -22,6 +22,7 @@ let initialGoal = {
 // Check if metric is measured in number, time or percentage
 
 const GoalTracker = ({ title, data, colorPrimary, colorSecondary }) => {
+  // adapt all of this for modalContext, make it general
   const [goals, setGoals] = useState(initialGoals)
   const [goal, setGoal] = useState(initialGoal)
   const [showModal, setShowModal] = useState(false)
@@ -64,6 +65,7 @@ const GoalTracker = ({ title, data, colorPrimary, colorSecondary }) => {
     <div className="goal-tracker-container">
       <h2>{title}</h2>
       {goals?.map((item, index) => (
+        // should this be a table?
         <GoalTrackerItem key={index} data={item} />
       ))}
       <div className="goal-tracker-new">
@@ -73,6 +75,7 @@ const GoalTracker = ({ title, data, colorPrimary, colorSecondary }) => {
             <AddNewModal
               title={'Goal'}
               data={goal}
+              section={''}
               metricOptions={metricList}
               handleClose={handleClose}
               handleChange={handleChange}

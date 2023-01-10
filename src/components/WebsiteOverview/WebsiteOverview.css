@@ -1,12 +1,15 @@
 .overview-container {
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 1rem;
 }
 
 .website-card-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   gap: 2rem;
   /* margin-top: 1rem; */
 }

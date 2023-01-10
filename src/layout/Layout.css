@@ -26,13 +26,13 @@
   grid-area: 1 / 8 / 5 / 11;
 }
 .goal-tracker-grid-container {
-  grid-area: 5 / 1 / 13 / 5;
+  grid-area: 5 / 1 / 13 / 7;
 }
 .traffic-source-grid-container {
   grid-area: 5 / 5 / 13 / 8;
 }
 .social-media-grid-container {
-  grid-area: 5 / 8 / 13 / 11;
+  grid-area: 5 / 7 / 13 / 11;
 }
 
 .area {

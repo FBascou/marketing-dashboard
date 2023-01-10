@@ -19,7 +19,7 @@ const Table = ({ headers, data, colored, colorPrimary }) => {
         {data.map((item) => (
           <tr key={item.id} className="table-row">
             <td className={`social-media-icon ${colored}`} style={{ color: colorPrimary }}>
-              {item.icon}
+              <a href={item.url}>{item.icon}</a>
             </td>
             <td>{item.followers}</td>
             <td>{item.pageViews}</td>
