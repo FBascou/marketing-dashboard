@@ -1,10 +1,10 @@
 {
-  "homepage": "https://fbascou.github.io/marketing-dashboard/",
+  "homepage": "https://fbascou.github.io/marketing-dashboard",
   "name": "marketing-dashboard",
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "predeploy": "yarn run build",
+    "predeploy": "yarn vite build",
     "deploy": "gh-pages -d build",
     "dev": "start http://localhost:3000 & vite",
     "build": "vite build",
