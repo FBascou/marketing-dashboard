@@ -1,6 +1,7 @@
 .tooltip-container {
   position: relative;
   cursor: help;
+  display: none;
 }
 
 .tooltip-popup {
