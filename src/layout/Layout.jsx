@@ -24,7 +24,6 @@ const Layout = () => {
 
   const handleModal = (e) => {
     e.preventDefault();
-    console.log('hello');
     setShowModal((show) => !show);
   };
 

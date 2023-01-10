@@ -12,7 +12,6 @@ const AddNewModal = ({
   handleAdd,
   handleClear,
 }) => {
-  console.log(data);
   return (
     <div className="modal-container">
       <form onSubmit={handleAdd} className="modal-form-container">

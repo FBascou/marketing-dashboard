@@ -4,7 +4,6 @@ const Input = ({ goals, setGoals }) => {
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
-    console.log(name, value);
   };
 
   return (
