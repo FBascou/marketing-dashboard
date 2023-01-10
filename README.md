@@ -18,12 +18,22 @@ Dashboard to manage and monitor the activity and performance of different digita
 
 ## Getting started
 
+Install the package manager (Yarn) via NPM
+```
+npm install --global yarn
+```
+
+Check installation and version
+```
+yarn --version
+```
+
 Add dependencies
 ```
 yarn install
 ```
-Run the dashboard
 
+Run the dashboard
 ```
 yarn run dev
 ```
