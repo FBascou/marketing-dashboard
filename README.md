@@ -2,6 +2,10 @@
 
 Dashboard to manage and monitor the activity and performance of different digital marketing channels.
 
+Live Demo: [Marketing Dashboard Live Demo](https://marketing-dashboard-demo.netlify.app/)
+
+
+
 ![alt text](https://i.gyazo.com/115113f01a926ca69c09a4fea247fc8c.png)
 
 ## Tech
