@@ -1,6 +1,6 @@
-import React from 'react'
-import Tooltip from '../Tooltip/Tooltip'
-import './Table.css'
+import React from 'react';
+import Tooltip from '../Tooltip/Tooltip';
+import './Table.css';
 
 const Table = ({ headers, data, colored, colorPrimary }) => {
   return (
@@ -9,8 +9,8 @@ const Table = ({ headers, data, colored, colorPrimary }) => {
         <tr className="table-row">
           {headers.map((header, index) => (
             <th key={index}>
-              <Tooltip text={header} />
-              {/* {header} */}
+              {/* <Tooltip text={header} /> */}
+              {header}
             </th>
           ))}
         </tr>
@@ -29,7 +29,7 @@ const Table = ({ headers, data, colored, colorPrimary }) => {
         ))}
       </tbody>
     </table>
-  )
-}
+  );
+};
 
-export default Table
+export default Table;
